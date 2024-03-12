@@ -44,7 +44,7 @@ function AvisUser() {
   };
 
   return (
-    <div className="container">
+    <div className='container flex flex-col h-screen justify-center'>
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="form-group flex flex-col  mb-4">
         <label htmlFor="avis" className="mb-2 text-lg">
