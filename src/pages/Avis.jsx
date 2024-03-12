@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AvisItem from './component/AvisItem';
+import AvisItem from '../component/AvisItem';
 
 function Avis() {
   const [avis, setUnAvis] = useState([]);
@@ -21,7 +21,8 @@ function Avis() {
     }, [])
 
   return (
-    <section className="bg-blue-700 text-white min-h-screen flex items-center justify-center">
+    //bg-blue-700 text-white min-h-screen
+    <section className=" flex items-center justify-center">
   
     <div className='container flex flex-col h-screen justify-center'>
     <h1 className="text-4xl font-bold mb-8 text-center">Les avis sur nos produits</h1>
