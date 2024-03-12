@@ -8,7 +8,41 @@ function App() {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      // Ajustez la structure des données pour correspondre à celle attendue par l'API Spring
+      const formattedData = {
+        avis: data.avis,
+        type: "POSITIF", // Remplacez par la valeur attendue pour le champ "type"
+        client: {
+          email: data.email,
+        },
+      };
+
+      const response = await fetch('http://localhost:8080/api/avis', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formattedData),
+      });
+
+      if (response.ok) {
+        // La requête a réussi (code de statut 2xx)
+        const responseData = await response.json();
+        console.log(responseData);
+
+        // Ajoutez ici tout traitement supplémentaire si nécessaire
+      } else {
+        // La requête a échoué (code de statut autre que 2xx)
+        console.error('Erreur lors de la requête POST :', response.status, response.statusText);
+      }
+    } catch (error) {
+      // Gérez les erreurs de la requête
+      console.error('Erreur lors de la requête POST :', error);
+    }
+  };
+
 
   return (
     <section className="bg-blue-700 text-white min-h-screen flex items-center justify-center">
